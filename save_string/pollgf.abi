@@ -1,0 +1,163 @@
+{
+  "types": [{
+      "new_type_name": "poll_id_t",
+      "type": "uint64"
+    },{
+      "new_type_name": "option_results",
+      "type": "option_result[]"
+    },{
+      "new_type_name": "token_info_t",
+      "type": "extended_symbol"
+    },{
+      "new_type_name": "symbol_name",
+      "type": "symbol"
+    }
+  ],
+  "structs": [{
+      "name": "option",
+      "base": "",
+      "fields": [{
+          "name": "name",
+          "type": "string"
+        }
+      ]
+    },{
+      "name": "option_result",
+      "base": "option",
+      "fields": [{
+          "name": "votes",
+          "type": "float64"
+        }
+      ]
+    },{
+      "name": "symbol_type",
+      "base": "",
+      "fields": [{
+          "name": "value",
+          "type": "symbol_name"
+        }
+      ]
+    },{
+      "name": "extended_symbol",
+      "base": "symbol_type",
+      "fields": [{
+          "name": "contract",
+          "type": "name"
+        }
+      ]
+    },{
+      "name": "poll",
+      "base": "",
+      "fields": [{
+          "name": "id",
+          "type": "poll_id_t"
+        },{
+          "name": "question",
+          "type": "string"
+        },{
+          "name": "results",
+          "type": "option_results"
+        },{
+          "name": "is_token_poll",
+          "type": "bool"
+        },{
+          "name": "token",
+          "type": "token_info_t"
+        }
+      ]
+    },{
+      "name": "poll_vote",
+      "base": "",
+      "fields": [{
+          "name": "pollid",
+          "type": "poll_id_t"
+        },{
+          "name": "optionid",
+          "type": "uint8"
+        }
+      ]
+    },{
+      "name": "newpoll",
+      "base": "",
+      "fields": [{
+          "name": "question",
+          "type": "string"
+        },{
+          "name": "creator",
+          "type": "name"
+        },{
+          "name": "options",
+          "type": "string[]"
+        }
+      ]
+    },{
+      "name": "newtokenpoll",
+      "base": "",
+      "fields": [{
+          "name": "question",
+          "type": "string"
+        },{
+          "name": "creator",
+          "type": "name"
+        },{
+          "name": "options",
+          "type": "string[]"
+        },{
+          "name": "token",
+          "type": "token_info_t"
+        }
+      ]
+    },{
+      "name": "vote",
+      "base": "",
+      "fields": [{
+          "name": "id",
+          "type": "poll_id_t"
+        },{
+          "name": "voter",
+          "type": "name"
+        },{
+          "name": "option_id",
+          "type": "uint8"
+        }
+      ]
+    }
+  ],
+  "actions": [{
+      "name": "newpoll",
+      "type": "newpoll",
+      "ricardian_contract": ""
+    },{
+      "name": "newtokenpoll",
+      "type": "newtokenpoll",
+      "ricardian_contract": ""
+    },{
+      "name": "vote",
+      "type": "vote",
+      "ricardian_contract": ""
+    }
+  ],
+  "tables": [{
+      "name": "poll",
+      "index_type": "i64",
+      "key_names": [
+        "id"
+      ],
+      "key_types": [
+        "poll_id_t"
+      ],
+      "type": "poll"
+    },{
+      "name": "votes",
+      "index_type": "i64",
+      "key_names": [
+        "id"
+      ],
+      "key_types": [
+        "poll_id_t"
+      ],
+      "type": "poll_vote"
+    }
+  ],
+  "ricardian_clauses": []
+}
