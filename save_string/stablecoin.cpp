@@ -1,4 +1,4 @@
-#include "stablecoooin.hpp"
+#include "stablecoin.hpp"
 
 /**
  * Action: create a new token.

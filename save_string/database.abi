@@ -1,52 +1,45 @@
 {
+  "version": "eosio::abi/1.2",
   "types": [],
-  "structs": [{
-      "name": "da",
-      "base": "",
-      "fields": [{
-          "name": "post_id",
-          "type": "uint64"
-        },{
-          "name": "poster",
-          "type": "account_name"
-        },{
-          "name": "title",
-          "type": "string"
-        },{
-          "name": "content",
-          "type": "string"
-        }
-      ]
-    },{
+  "structs": [
+    {
       "name": "create",
       "base": "",
-      "fields": [{
-          "name": "user",
-          "type": "account_name"
-        },{
-          "name": "title",
-          "type": "string"
-        },{
-          "name": "content",
-          "type": "string"
-        }
+      "fields": [
+        {"name": "user", "type": "name"},
+        {"name": "title", "type": "string"},
+        {"name": "content", "type": "string"}
       ]
-    }}
+    },
+    {
+      "name": "erase",
+      "base": "",
+      "fields": [
+        {"name": "user", "type": "name"},
+        {"name": "post_id", "type": "uint64"}
+      ]
+    },
+    {
+      "name": "da",
+      "base": "",
+      "fields": [
+        {"name": "post_id", "type": "uint64"},
+        {"name": "poster", "type": "name"},
+        {"name": "title", "type": "string"},
+        {"name": "content", "type": "string"}
+      ]
+    }
   ],
-  "actions": [{
-          "name": "create",
-          "type": "create",
-        }
+  "actions": [
+    {"name": "create", "type": "create", "ricardian_contract": ""},
+    {"name": "erase",  "type": "erase",  "ricardian_contract": ""}
   ],
-  "tables": [{
+  "tables": [
+    {
       "name": "data",
       "index_type": "i64",
-      "key_names": [
-        "post_id"
-      ],
-      "key_types": [
-        "uint64"
-      ],
+      "key_names": ["post_id"],
+      "key_types": ["uint64"],
       "type": "da"
     }
   ],
